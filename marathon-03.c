@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <unistd.h>
+void ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void fuuu(char *av)
+{
+	int i;
+	i = 0;
+	char num;
+	num = '0';
+	while( > num && i < 16)
+	{
+		i = i + 9;
+		num = num + 1;
+	}
+	ft_putchar(num);
+	ft_putchar('\n');
+}
+
+int check(int ac, char *av)
+{
+	int i;
+	i = 0;
+	if(ac != 2)
+		return 0;
+	else
+		while (av[i] != '\0')
+		{
+			if(av[i] > '0' && av[i] <= '9')
+				i++;
+			else if(av[i] == ' ')
+				av++;
+			else
+				return 0;
+		
+		}
+	printf("deb %d\n", i);
+	return 1;	
+}
+
+int main(int ac, char **av)
+{
+	if(check(ac, av[1]) == 0)
+		write(1, "ERROR\n", 6);
+	else
+		fuuu(av[1]);
+	return 0;
+}
